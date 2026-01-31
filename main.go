@@ -72,4 +72,8 @@ func main() {
 	for scanner.Scan() {
 		process(opts.Whole, scanner.Text(), subs)
 	}
+
+	if err := scanner.Err(); err != nil {
+		logger.Fatal("%s", err)
+	}
 }
