@@ -49,8 +49,7 @@ func process(whole bool, path string, subs []substitution) {
 	}
 
 	if fileData != originalFileData {
-		result := diff(originalFileData, fileData, path)
-		fmt.Println(result)
+		fmt.Println(diff(originalFileData, fileData, path))
 	}
 }
 
