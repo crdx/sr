@@ -26,7 +26,7 @@ func (self *substitution) replace(s string) string {
 	return self.pattern.ReplaceAllString(s, self.replacement)
 }
 
-func process(whole bool, path string, substitutions *[]substitution) {
+func process(whole bool, path string, subs []substitution) {
 	fileData, ok := read(path)
 	if !ok {
 		return
@@ -35,22 +35,22 @@ func process(whole bool, path string, substitutions *[]substitution) {
 	originalFileData := fileData
 
 	if whole {
-		for _, substitution := range *substitutions {
-			fileData = substitution.replace(fileData)
+		for _, sub := range subs {
+			fileData = sub.replace(fileData)
 		}
 	} else {
 		fileDataLines := strings.Split(fileData, "\n")
-		for _, substitution := range *substitutions {
+		for _, sub := range subs {
 			for i, line := range fileDataLines {
-				fileDataLines[i] = substitution.replace(line)
+				fileDataLines[i] = sub.replace(line)
 			}
 		}
 		fileData = strings.Join(fileDataLines, "\n")
 	}
 
 	if fileData != originalFileData {
-		diff := diff(originalFileData, fileData, path)
-		fmt.Println(diff)
+		result := diff(originalFileData, fileData, path)
+		fmt.Println(result)
 	}
 }
 

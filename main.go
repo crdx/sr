@@ -47,10 +47,10 @@ func main() {
 		logger.Fatal("odd number of arguments")
 	}
 
-	var substitutions []substitution
+	var subs []substitution
 	for i, pattern := range opts.Patterns {
 		if opts.Fixed {
-			substitutions = append(substitutions, substitution{
+			subs = append(subs, substitution{
 				fixedString: pattern,
 				replacement: opts.Replacements[i],
 				isFixed:     true,
@@ -62,7 +62,7 @@ func main() {
 				os.Exit(1)
 			}
 
-			substitutions = append(substitutions, substitution{
+			subs = append(subs, substitution{
 				pattern:     compiled,
 				replacement: opts.Replacements[i],
 			})
@@ -71,6 +71,6 @@ func main() {
 
 	scanner := bufio.NewScanner(os.Stdin)
 	for scanner.Scan() {
-		process(opts.Whole, scanner.Text(), &substitutions)
+		process(opts.Whole, scanner.Text(), subs)
 	}
 }
