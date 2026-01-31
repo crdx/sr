@@ -15,8 +15,8 @@ func getUsage() string {
 		Usage:
 			$0 [options] <pattern> <replacement> [<pattern> <replacement>]...
 
-		Outputs a unified diff that can be piped to patch -p0.
-		Pass in filenames via stdin (no xargs needed).
+		Searches for patterns and outputs a unified diff that can be piped to
+		patch -p0. Pass in filenames via stdin (no xargs needed).
 
 		Examples:
 			find | $0 foo bar | patch -p0

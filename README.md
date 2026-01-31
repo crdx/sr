@@ -20,8 +20,8 @@ go install crdx.org/sr@latest
 Usage:
     sr [options] <pattern> <replacement> [<pattern> <replacement>]...
 
-Outputs a unified diff that can be piped to patch -p0.
-Pass in filenames via stdin (no xargs needed).
+Searches for patterns and outputs a unified diff that can be piped to
+patch -p0. Pass in filenames via stdin (no xargs needed).
 
 Examples:
     find | sr foo bar | patch -p0
