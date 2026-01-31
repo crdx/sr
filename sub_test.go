@@ -3,6 +3,8 @@ package main
 import (
 	"regexp"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestSubstitution_Replace_Fixed(t *testing.T) {
@@ -57,10 +59,7 @@ func TestSubstitution_Replace_Fixed(t *testing.T) {
 				replacement: tt.replacement,
 				isFixed:     true,
 			}
-			result := sub.replace(tt.input)
-			if result != tt.expected {
-				t.Errorf("got %q, want %q", result, tt.expected)
-			}
+			assert.Equal(t, tt.expected, sub.replace(tt.input))
 		})
 	}
 }
@@ -103,10 +102,7 @@ func TestSubstitution_Replace_Regex(t *testing.T) {
 				replacement: tt.replacement,
 				isFixed:     false,
 			}
-			result := sub.replace(tt.input)
-			if result != tt.expected {
-				t.Errorf("got %q, want %q", result, tt.expected)
-			}
+			assert.Equal(t, tt.expected, sub.replace(tt.input))
 		})
 	}
 }
