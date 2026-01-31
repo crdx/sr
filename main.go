@@ -58,8 +58,7 @@ func main() {
 		} else {
 			compiled, err := regexp.Compile(pattern)
 			if err != nil {
-				logger.Err("invalid regex pattern: %s", pattern)
-				os.Exit(1)
+				logger.Fatal("invalid regex pattern: %s", pattern)
 			}
 
 			subs = append(subs, substitution{
