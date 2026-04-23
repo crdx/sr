@@ -4,9 +4,7 @@
 
 Pipe file paths via stdin, get a patch via stdout. No files are modified: pipe the output to `patch -p0` to apply.
 
-## Introduction
-
-Read the [introductory post](https://textplain.org/sr).
+Read [the introduction post](https://textplain.org/sr).
 
 ## Installation
 
