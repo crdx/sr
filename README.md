@@ -12,7 +12,7 @@ Read [the introduction post](https://textplain.org/sr).
 go install crdx.org/sr@latest
 ```
 
-## CLI
+## Usage
 
 ```
 Usage:
